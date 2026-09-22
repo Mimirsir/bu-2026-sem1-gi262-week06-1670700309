@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using Unity.GraphToolkit.Editor;
+using Unity.VisualScripting;
 using UnityEngine;
+
 
 namespace MidtermExam.Prob02
 {
@@ -12,8 +15,38 @@ namespace MidtermExam.Prob02
         /// <returns>LinkedList ที่ได้รับการเรียงลำดับจากน้อยไปมากแล้ว</returns>
         public LinkedList<int> SortAscending(LinkedList<int> list)
         {
-            // TODO: Implement sorting algorithm for LinkedList<int> (Ascending)
-            return list;
+            if (list == null || list.Count < 2) ;
+            {
+
+                bool swapped = true;
+
+                while (swapped)
+                {
+                    swapped = false;
+                    var node = list.First;
+           
+                    while(true)
+                    {
+                        if (node.Next == null)
+                        { 
+                            break;
+                        }
+
+                        if (node.Value > node.Next.Value)
+                        {
+                            int temp = node.Value;
+                            node.Value = node.Next.Value;
+                            node.Value = temp;
+                            swapped = true;
+                        }
+                        node = node.Next;
+                    }
+                }
+                return list;
+            }
+
+
+
         }
 
         /// <summary>
@@ -23,8 +56,35 @@ namespace MidtermExam.Prob02
         /// <returns>LinkedList ที่ได้รับการเรียงลำดับจากมากไปน้อยแล้ว</returns>
         public LinkedList<int> SortDescending(LinkedList<int> list)
         {
-            // TODO: Implement sorting algorithm for LinkedList<int> (Descending)
-            return list;
+            if (list == null || list.Count < 2) ;
+            {
+
+                bool swapped = true;
+
+                while (swapped)
+                {
+                    swapped = false;
+                    var node = list.First;
+
+                    while (true)
+                    {
+                        if (node.Next == null)
+                        {
+                            break;
+                        }
+
+                        if (node.Value < node.Next.Value)
+                        {
+                            int temp = node.Value;
+                            node.Value = node.Next.Value;
+                            node.Value = temp;
+                            swapped = true;
+                        }
+                        node = node.Next;
+                    }
+                }
+                return list;
+            }
         }
     }
 }
